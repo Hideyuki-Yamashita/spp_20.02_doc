@@ -10,7 +10,6 @@ RTE_TARGET ?= x86_64-native-linuxapp-gcc
 
 include $(RTE_SDK)/mk/rte.vars.mk
 
-DIRS-y += vhost
 DIRS-y += pipe
 
 include $(RTE_SDK)/mk/rte.extsubdir.mk
