@@ -10,7 +10,7 @@
 #define NR_DESCS 128
 
 #define VHOST_IFACE_NAME "/tmp/sock%u"
-#define VHOST_BACKEND_NAME "spp_vhost%u"
+#define VHOST_BACKEND_NAME "eth_vhost%u"
 
 #define PCAP_PMD_DEV_NAME "eth_pcap%u"
 #define MEMIF_PMD_DEV_NAME "net_memif%u"

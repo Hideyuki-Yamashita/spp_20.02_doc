@@ -91,9 +91,7 @@ int parse_dev_name(char *dev_name, int *port_type, int *port_id)
 	} else if (strncmp(dev_name, VDEV_ETH_VHOST,
 				strlen(VDEV_ETH_VHOST)) == 0 ||
 			strncmp(dev_name, VDEV_NET_VHOST,
-				strlen(VDEV_NET_VHOST)) == 0 ||
-			strncmp(dev_name, VDEV_SPP_VHOST,
-				strlen(VDEV_SPP_VHOST)) == 0) {
+				strlen(VDEV_NET_VHOST)) == 0) {
 		dev_str_len = strlen(VDEV_NET_VHOST);
 		pid_len = dev_name_len - dev_str_len;
 		strncpy(pid_str, dev_name + strlen(VDEV_NET_VHOST),

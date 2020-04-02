@@ -186,11 +186,16 @@ add_vhost_pmd(int index)
 		return ret;
 	}
 
-	/* NOTE: make sure the eth_dev is stopped.
-	 * it is for the case a secondary process which used the vhost
-	 * was down without stopping the device.
-	 * note that it is still user responsibility to prevent multipul
-	 * processes use a vhost at the same time.
+	/* NOTE:
+	 * A vhost PMD is shared among multi processes, but it
+	 * can be used by only one process. It is user responsibility
+	 * to prevent multipul processes use a vhost at the same time.
+	 * The same vhost interface can be used after the vhost is
+	 * deleted (and created again) or the process which used the
+	 * vhost is down.
+	 * dev_attach_by_devargs will succeed even if the device exists.
+	 * rte_eth_dev_stop is necessary to configure the device again.
+	 * It is no-op if the device is stopped.
 	 */
 	rte_eth_dev_stop(vhost_port_id);
 
