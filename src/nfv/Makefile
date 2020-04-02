@@ -28,6 +28,6 @@ LDLIBS += -lrte_pmd_vhost
 endif
 
 SPP_DRIVERS_DIR = $(BASE_OUTPUT)/src/drivers
-EXTRA_LDLIBS = -L$(SPP_DRIVERS_DIR)/vhost -L$(SPP_DRIVERS_DIR)/pipe --whole-archive -lrte_pmd_spp_vhost -lrte_pmd_spp_pipe --no-whole-archive
+EXTRA_LDLIBS = -L$(SPP_DRIVERS_DIR)/pipe --whole-archive -lrte_pmd_spp_pipe --no-whole-archive
 
 include $(RTE_SDK)/mk/rte.extapp.mk
