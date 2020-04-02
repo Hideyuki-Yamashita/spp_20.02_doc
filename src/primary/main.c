@@ -970,7 +970,6 @@ del_port(char *p_type, int p_id)
 		dev_id = find_ethdev_id(p_id, VHOST);
 		if (dev_id == PORT_RESET)
 			return -1;
-		rte_eth_dev_stop(dev_id);
 		dev_detach_by_port_id(dev_id);
 
 	} else if (!strcmp(p_type, "ring")) {
