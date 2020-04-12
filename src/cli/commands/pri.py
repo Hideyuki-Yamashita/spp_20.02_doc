@@ -239,9 +239,9 @@ class SppPrimary(object):
                         print('    - {} -> {}'.format(port, dst))
 
             if ('pipes' in json_obj):
-                print('  - pipes:')
+                print('- pipes:')
                 for pipe in json_obj['pipes']:
-                    print('    - pipe:{} ring:{} ring:{}'.format(pipe['id'],
+                    print('  - pipe:{} ring:{} ring:{}'.format(pipe['id'],
                         pipe['rx'], pipe['tx']))
 
             if ('phy_ports' in json_obj) or ('ring_ports' in json_obj):
