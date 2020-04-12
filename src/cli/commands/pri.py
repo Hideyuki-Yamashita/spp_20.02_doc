@@ -49,6 +49,9 @@ class SppPrimary(object):
 
         self.flow = SppPrimaryFlow(spp_ctl_cli)
 
+    def _port_is_pipe(self, params):
+        return len(params) > 0 and params[0].startswith("pipe:")
+
     def _do_if_forwarder_exists(self, status, func, params):
         """Execute command of func if forwarder thread is existing.
 
@@ -103,10 +106,16 @@ class SppPrimary(object):
                     print('Error: unknown response from status.')
 
         elif subcmd == 'add':
-            self._do_if_forwarder_exists(status, self._run_add, params)
+            if self._port_is_pipe(params):
+                self._run_add(params, is_pipe=True)
+            else:
+                self._do_if_forwarder_exists(status, self._run_add, params)
 
         elif subcmd == 'del':
-            self._do_if_forwarder_exists(status, self._run_del, params)
+            if self._port_is_pipe(params):
+                self._run_del(params, is_pipe=True)
+            else:
+                self._do_if_forwarder_exists(status, self._run_del, params)
 
         elif subcmd == 'forward' or subcmd == 'stop':
             self._do_if_forwarder_exists(status,
@@ -795,7 +804,7 @@ class SppPrimary(object):
             index += 1
         return opts_dict
 
-    def _run_add(self, params):
+    def _run_add(self, params, is_pipe=False):
         """Run `add` command."""
 
         if len(params) == 0:
@@ -819,12 +828,13 @@ class SppPrimary(object):
                 else:
                     print('Error: unknown response for add.')
 
-            self.ports = self._get_ports()  # update to current status
-            if self.ports is None:
-                print('Cannot retrieve ports from spp_primary')
-                self.ports = []
+            if not is_pipe:
+                self.ports = self._get_ports()  # update to current status
+                if self.ports is None:
+                    print('Cannot retrieve ports from spp_primary')
+                    self.ports = []
 
-    def _run_del(self, params):
+    def _run_del(self, params, is_pipe=False):
         """Run `del` command."""
 
         if len(params) == 0:
@@ -849,10 +859,11 @@ class SppPrimary(object):
                     else:
                         print('Error: unknown response for del.')
 
-            self.patches = self._get_patches()  # update to current status
-            if self.patches is None:
-                print('Cannot retrieve patches from spp_primary')
-                self.patches = []
+            if not is_pipe:
+                self.patches = self._get_patches()  # update to current status
+                if self.patches is None:
+                    print('Cannot retrieve patches from spp_primary')
+                    self.patches = []
 
     def _run_forward_or_stop(self, cmd):
         """Run `forward` or `stop` command."""
