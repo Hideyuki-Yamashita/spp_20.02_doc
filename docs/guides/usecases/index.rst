@@ -32,3 +32,4 @@ or via REST API from :ref:`API Reference<spp_api_ref_index>`.
    spp_pcap
    multi_nodes
    hardware-offload
+   pipe_pmd

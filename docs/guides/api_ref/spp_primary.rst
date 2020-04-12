@@ -202,6 +202,8 @@ Action is ``stop``.
     spp > pri; stop
 
 
+.. _api_spp_ctl_spp_primary_put_ports:
+
 PUT /v1/primary/ports
 ---------------------
 
