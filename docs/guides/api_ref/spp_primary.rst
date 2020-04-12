@@ -41,6 +41,8 @@ Response
     +------------+-------+----------------------------------------+
     | ring_ports | array | Array of statistics of ring ports.     |
     +------------+-------+----------------------------------------+
+    | pipes      | array | Array of pipe ports.                   |
+    +------------+-------+----------------------------------------+
 
 Physical port object.
 
@@ -82,6 +84,23 @@ Ring port object.
     | tx      | integer | The total number of transferred packets.            |
     +---------+---------+-----------------------------------------------------+
     | tx_drop | integer | The total number of dropped packets of transferred. |
+    +---------+---------+-----------------------------------------------------+
+
+Pipe port object.
+
+.. _table_spp_ctl_primary_status_pipe:
+
+.. table:: Attributes of pipe port of primary status.
+
+    +---------+---------+-----------------------------------------------------+
+    | Name    | Type    | Description                                         |
+    |         |         |                                                     |
+    +=========+=========+=====================================================+
+    | id      | integer | Port ID of the pipe port.                           |
+    +---------+---------+-----------------------------------------------------+
+    | rx      | integer | Port ID of the ring port for rx.                    |
+    +---------+---------+-----------------------------------------------------+
+    | tx      | integer | Port ID of the ring port for tx.                    |
     +---------+---------+-----------------------------------------------------+
 
 
@@ -131,6 +150,13 @@ Response example
           "rx_drop": 0,
           "tx": 0,
           "tx_drop": 0
+        }
+      ],
+      "pipes": [
+        {
+          "id": 0,
+          "rx": 0,
+          "tx": 1
         }
       ]
     }
@@ -192,14 +218,18 @@ Request (body)
 
 .. table:: Request body params of ports of ``spp_primary``.
 
-    +--------+--------+--------------------------------------------------+
-    | Name   | Type   | Description                                      |
-    |        |        |                                                  |
-    +========+========+==================================================+
-    | action | string | ``add`` or ``del``.                              |
-    +--------+--------+--------------------------------------------------+
-    | port   | string | Resource UID of {port_type}:{port_id}.           |
-    +--------+--------+--------------------------------------------------+
+    +--------+--------+---------------------------------------------------------+
+    | Name   | Type   | Description                                             |
+    |        |        |                                                         |
+    +========+========+=========================================================+
+    | action | string | ``add`` or ``del``.                                     |
+    +--------+--------+---------------------------------------------------------+
+    | port   | string | Resource UID of {port_type}:{port_id}.                  |
+    +--------+--------+---------------------------------------------------------+
+    | rx     | string | Rx ring for pipe. It is necessary for adding pipe only. |
+    +--------+--------+---------------------------------------------------------+
+    | tx     | string | Tx ring for pipe. It is necessary for adding pipe only. |
+    +--------+--------+---------------------------------------------------------+
 
 
 Request example
@@ -211,6 +241,14 @@ Request example
       -d '{"action": "add", "port": "ring:0"}' \
       http://127.0.0.1:7777/v1/primary/ports
 
+For adding pipe.
+
+.. code-block:: console
+
+    $ curl -X PUT -H 'application/json' \
+      -d '{"action": "add", "port": "pipe:0", \
+      "rx": "ring:0", "tx": "ring:1"}' \
+      http://127.0.0.1:7777/v1/primary/ports
 
 Response
 ~~~~~~~~
