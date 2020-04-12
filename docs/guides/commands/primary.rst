@@ -51,6 +51,8 @@ Show status fo ``spp_primary`` and forwarding statistics of each of ports.
     spp > pri; status
     - lcore_ids:
       - master: 0
+    - pipes:
+      - pipe:0 ring:0 ring:1
     - stats
       - physical ports:
           ID          rx          tx    tx_drop   rxq  txq mac_addr
@@ -78,6 +80,7 @@ also displayed.
       - ports:
         - phy:0
         - phy:1
+    - pipes:
     - stats
       - physical ports:
           ID          rx          tx    tx_drop  mac_addr
@@ -110,6 +113,7 @@ add
 
 Add a port with resource ID.
 
+If the type of a port is other than pipe, specify port only.
 For example, adding ``ring:0`` by
 
 .. code-block:: console
@@ -124,6 +128,18 @@ Or adding ``vhost:0`` by
     spp > pri; add vhost:0
     Add vhost:0.
 
+If the type of a port is pipe, specify a ring for rx and a ring
+for tx following a port. For example,
+
+.. code-block:: console
+
+    spp > pri; add pipe:0 ring:0 ring:1
+    Add pipe:0.
+
+.. note::
+
+   pipe is independent of the forwarder and can be added even if the
+   forwarder does not exist.
 
 .. _commands_primary_patch:
 
