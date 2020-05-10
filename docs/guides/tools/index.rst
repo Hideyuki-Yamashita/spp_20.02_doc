@@ -12,3 +12,4 @@ Tools
 
    sppc/index
    helpers/index
+   vdev_test.rst
