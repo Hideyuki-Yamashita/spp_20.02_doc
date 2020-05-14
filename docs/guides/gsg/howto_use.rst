@@ -1035,10 +1035,3 @@ On the VMs, add an interface and disable offload.
 
     # Disable offload
     $ sudo ethtool -K IF_NAME tx off
-
-On host machine, it is also required to disable offload.
-
-.. code-block:: console
-
-    # Disable offload for VM
-    $ sudo ethtool -K IF_NAME tx off
