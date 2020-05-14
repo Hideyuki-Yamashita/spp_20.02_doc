@@ -27,11 +27,11 @@ SPP primary process is responsible for resource management, for example,
 initializing ports, mbufs or shared memory. On the other hand,
 secondary processes of ``spp_nfv`` are working for forwarding
 `[1]
-<https://dpdksummit.com/Archive/pdf/2017USA/Implementation%20and%20Testing%20of%20Soft%20Patch%20Panel.pdf>`_.
+<https://www.dpdk.org/wp-content/uploads/sites/35/2018/06/Implementation-and-Testing-of-Soft-Patch-Panel.pdf>`_.
 
 
 Reference
 ---------
 
 * [1] `Implementation and Testing of Soft Patch Panel
-  <https://dpdksummit.com/Archive/pdf/2017USA/Implementation%20and%20Testing%20of%20Soft%20Patch%20Panel.pdf>`_
+  <https://www.dpdk.org/wp-content/uploads/sites/35/2018/06/Implementation-and-Testing-of-Soft-Patch-Panel.pdf>`_
