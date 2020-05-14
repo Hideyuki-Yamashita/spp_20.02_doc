@@ -831,7 +831,7 @@ and three vhost interfaces.
      sudo docker run \
      ...
      sppc/pktgen-ubuntu:latest \
-     /root/dpdk/../pktgen-dpdk/app/x86_64-native-linuxapp-gcc/pktgen \
+     /root/dpdk/../pktgen-dpdk/app/x86_64-native-linux-gcc/pktgen \
      -l 8-14 \
      ...
      -- \

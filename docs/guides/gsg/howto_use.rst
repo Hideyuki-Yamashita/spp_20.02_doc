@@ -120,7 +120,7 @@ It is same as following options launching from terminal.
 
 .. code-block:: console
 
-    $ sudo ./src/nfv/x86_64-native-linuxapp-gcc/spp_nfv \
+    $ sudo ./src/nfv/x86_64-native-linux-gcc/spp_nfv \
         -l 1,2 -n 4 -m 512 \
         --proc-type secondary \
         --file-prefix spp \
@@ -383,7 +383,7 @@ To launch SPP primary, run ``spp_primary`` with specific options.
 .. code-block:: console
 
     # terminal 3
-    $ sudo ./src/primary/x86_64-native-linuxapp-gcc/spp_primary \
+    $ sudo ./src/primary/x86_64-native-linux-gcc/spp_primary \
         -l 0 -n 4 \
         --socket-mem 512,512 \
         --huge-dir /dev/hugepages \
@@ -430,7 +430,7 @@ Here is an example for launching ``spp_primary`` with monitor thread.
 .. code-block:: console
 
     # terminal 3
-    $ sudo ./src/primary/x86_64-native-linuxapp-gcc/spp_primary \
+    $ sudo ./src/primary/x86_64-native-linux-gcc/spp_primary \
         -l 0-1 -n 4 \   # two lcores
         --socket-mem 512,512 \
         --huge-dir /dev/hugepages \
@@ -453,7 +453,7 @@ secondary processes.
 .. code-block:: console
 
     # terminal 3
-    $ sudo ./src/primary/x86_64-native-linuxapp-gcc/spp_primary \
+    $ sudo ./src/primary/x86_64-native-linux-gcc/spp_primary \
         -l 0 -n 4 \
         --socket-mem 512,512 \
         --huge-dir=/dev/hugepages \
@@ -473,7 +473,7 @@ with white list option.
 .. code-block:: console
 
     # terminal 3
-    $ sudo ./src/primary/x86_64-native-linuxapp-gcc/spp_primary \
+    $ sudo ./src/primary/x86_64-native-linux-gcc/spp_primary \
         -l 0 -n 4 \
         -w 0000:03:00.0,dv_flow_en=1 \
         -w 0000:04:00.0,dv_flow_en=1 \
@@ -524,7 +524,7 @@ as ``l2fwd``.
 
     # terminal 4
     $ cd /path/to/spp
-    $ sudo ./src/nfv/x86_64-native-linuxapp-gcc/spp_nfv \
+    $ sudo ./src/nfv/x86_64-native-linux-gcc/spp_nfv \
         -l 2-3 -n 4 \
         --proc-type secondary \
         --file-prefix $SPP_FILE_PREFIX \
@@ -559,7 +559,7 @@ spp_vf
 
 .. code-block:: console
 
-    $ sudo ./src/vf/x86_64-native-linuxapp-gcc/spp_vf \
+    $ sudo ./src/vf/x86_64-native-linux-gcc/spp_vf \
         -l 2-13 -n 4 \
         --proc-type secondary \
         --file-prefix $SPP_FILE_PREFIX \
@@ -584,7 +584,7 @@ and options are same as ``spp_vf``.
 
 .. code-block:: console
 
-    $ sudo ./src/mirror/x86_64-native-linuxapp-gcc/spp_mirror \
+    $ sudo ./src/mirror/x86_64-native-linux-gcc/spp_mirror \
         -l 2,3 -n 4 \
         --proc-type secondary \
         --file-prefix $SPP_FILE_PREFIX \
@@ -611,7 +611,7 @@ SPP provides ``spp_pcap`` for capturing comparatively heavy traffic.
 
 .. code-block:: console
 
-    $ sudo ./src/pcap/x86_64-native-linuxapp-gcc/spp_pcap \
+    $ sudo ./src/pcap/x86_64-native-linux-gcc/spp_pcap \
         -l 2-5 -n 4 \
         --proc-type secondary \
         --file-prefix $SPP_FILE_PREFIX \
@@ -828,7 +828,7 @@ launching DPDK processes.
     # terminal 6
     $ ssh user@192.168.122.100
     $ cd /path/to/spp
-    $ sudo ./src/primary/x86_64-native-linuxapp-gcc/spp_primary \
+    $ sudo ./src/primary/x86_64-native-linux-gcc/spp_primary \
         -l 1 -n 4 \
         -m 1024 \
         --huge-dir=/dev/hugepages \

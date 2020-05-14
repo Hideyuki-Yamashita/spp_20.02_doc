@@ -59,7 +59,7 @@ Then, run ``spp_primary`` with one physical port.
 .. code-block:: console
 
     # terminal 3
-    $ sudo ./src/primary/x86_64-native-linuxapp-gcc/spp_primary \
+    $ sudo ./src/primary/x86_64-native-linux-gcc/spp_primary \
         -l 0 -n 4 \
         --socket-mem 512,512 \
         --huge-dir /run/hugepages/kvm \
@@ -79,7 +79,7 @@ writer threads.
 .. code-block:: console
 
     # terminal 4
-    $ sudo ./src/pcap/x86_64-native-linuxapp-gcc/spp_pcap \
+    $ sudo ./src/pcap/x86_64-native-linux-gcc/spp_pcap \
        -l 1-6 -n 4 --proc-type=secondary \
        -- \
        --client-id 1 -s 192.168.1.100:6666 \

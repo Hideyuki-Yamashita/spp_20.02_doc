@@ -129,6 +129,15 @@ config file ``common_base`` should be changed to ``y`` to enable PCAP.
     ...
     CONFIG_RTE_PORT_PCAP=y
 
+Compilation of igb_uio module is disabled by default in DPDK configuration.
+``CONFIG_RTE_EAL_IGB_UIO`` defined in config file ``common_base`` should be
+changed to ``y`` to enable compilation of igb_uio.
+
+.. code-block:: console
+
+    # dpdk/config/common_base
+    CONFIG_RTE_EAL_IGB_UIO=y
+
 If you use MLX5 NIC, ``CONFIG_RTE_LIBRTE_MLX5_PMD`` defined in
 config file ``common_base`` should be changed to ``y``.
 
@@ -143,7 +152,7 @@ Compile DPDK with target environment.
 
     $ cd dpdk
     $ export RTE_SDK=$(pwd)
-    $ export RTE_TARGET=x86_64-native-linuxapp-gcc  # depends on your env
+    $ export RTE_TARGET=x86_64-native-linux-gcc  # depends on your env
     $ make install T=$RTE_TARGET
 
 Pyhton

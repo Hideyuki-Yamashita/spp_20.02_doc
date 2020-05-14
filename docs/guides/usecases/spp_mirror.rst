@@ -70,7 +70,7 @@ three ports ``-p 0x07``.
 .. code-block:: console
 
    # terminal 3
-   $ sudo ./src/primary/x86_64-native-linuxapp-gcc/spp_primary \
+   $ sudo ./src/primary/x86_64-native-linux-gcc/spp_primary \
        -l 1 -n 4 \
        --socket-mem 512,512 \
        --huge-dir=/run/hugepages/kvm \
@@ -87,7 +87,7 @@ Run secondary process ``spp_mirror``.
 .. code-block:: console
 
     # terminal 4
-    $ sudo ./src/mirror/x86_64-native-linuxapp-gcc/app/spp_mirror \
+    $ sudo ./src/mirror/x86_64-native-linux-gcc/app/spp_mirror \
      -l 0,2 -n 4 \
      --proc-type secondary \
      -- \
@@ -230,7 +230,7 @@ Start spp_primary with core list option ``-l 1``.
 
     # terminal 3
     # Type the following in different terminal
-    $ sudo ./src/primary/x86_64-native-linuxapp-gcc/spp_primary \
+    $ sudo ./src/primary/x86_64-native-linux-gcc/spp_primary \
         -l 1 -n 4 \
         --socket-mem 512,512 \
         --huge-dir=/run/hugepages/kvm \
@@ -261,7 +261,7 @@ Launch ``VM1``, ``VM2`` and ``spp_vf`` with core list ``-l 0,2-8``.
 .. code-block:: console
 
    # terminal 4
-   $ sudo ./src/vf/x86_64-native-linuxapp-gcc/spp_vf \
+   $ sudo ./src/vf/x86_64-native-linux-gcc/spp_vf \
        -l 0,2-8 \
        -n 4 --proc-type secondary \
        -- \
@@ -329,7 +329,7 @@ Run ``spp_mirror``.
 .. code-block:: console
 
     # terminal 6
-    $ sudo ./src/mirror/x86_64-native-linuxapp-gcc/app/spp_mirror \
+    $ sudo ./src/mirror/x86_64-native-linux-gcc/app/spp_mirror \
       -l 0,9 \
       -n 4 --proc-type secondary \
       -- \

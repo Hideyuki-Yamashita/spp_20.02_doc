@@ -52,7 +52,7 @@ Launch ``spp-ctl`` and SPP CLI before primary and secondary processes.
 .. code-block:: console
 
     # terminal 3
-    $ sudo ./src/primary/x86_64-native-linuxapp-gcc/spp_primary \
+    $ sudo ./src/primary/x86_64-native-linux-gcc/spp_primary \
         -l 1 -n 4 \
         --socket-mem 512,512 \
         --huge-dir=/run/hugepages/kvm \
@@ -68,7 +68,7 @@ worker threads.
 .. code-block:: console
 
      # terminal 4
-     $ sudo ./src/vf/x86_64-native-linuxapp-gcc/spp_vf \
+     $ sudo ./src/vf/x86_64-native-linux-gcc/spp_vf \
         -l 2-6 \
         -n 4 --proc-type=secondary \
         -- \
@@ -281,7 +281,7 @@ Launch ``spp-ctl`` and SPP CLI before primary and secondary processes.
 .. code-block:: console
 
     # terminal 3
-    $ sudo ./src/primary/x86_64-native-linuxapp-gcc/spp_primary \
+    $ sudo ./src/primary/x86_64-native-linux-gcc/spp_primary \
         -l 1 -n 4 \
         --socket-mem 512,512 \
         --huge-dir=/run/hugepages/kvm \
@@ -295,7 +295,7 @@ to use twelve lcores.
 .. code-block:: console
 
     # terminal 4
-    $ sudo ./src/vf/x86_64-native-linuxapp-gcc/spp_vf \
+    $ sudo ./src/vf/x86_64-native-linux-gcc/spp_vf \
         -l 0,2-13 \
         -n 4 --proc-type=secondary \
         -- \
