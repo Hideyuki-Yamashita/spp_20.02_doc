@@ -71,6 +71,61 @@ and so on.
     pid 192626's current affinity list: 0-31
     pid 192626's new affinity list: 7
 
+Consideration of NUMA node
+--------------------------
+
+``spp_primary`` tries to create memory pool in the same NUMA node where
+it is launched. Under NUMA configuration, the NUMA node where ``spp_primary``
+is launched and the NUMA node where NIC is connected can be different
+(e.g. spp_primary runs in NUMA node 0 while NIC is connected with NUMA
+node 1).
+Such configuration may cause performance degradation. In general, under
+NUMA configuration, it is best practice to use CPU and NIC which belongs
+to the same NUMA node for best performance. So user should align those
+when performance degradation makes the situation critical.
+
+To check NUMA node which CPU/NIC core belongs, ``lstopo`` command can be used.
+In the following example, CPU core 0 belongs to NUMA node 0 while
+``enp175s0f0`` belongs to NUMA node 1.
+
+.. code-block:: console
+
+    $ lstopo
+    Machine (93GB total)
+      NUMANode L#0 (P#0 46GB)
+        Package L#0 + L3 L#0 (17MB)
+          L2 L#0 (1024KB) + L1d L#0 (32KB) + L1i L#0 (32KB) + Core L#0
+    .....
+      NUMANode L#1 (P#1 47GB)
+        Package L#1 + L3 L#1 (17MB)
+          L2 L#12 (1024KB) + L1d L#12 (32KB) + L1i L#12 (32KB) + Core L#12
+            PU L#24 (P#1)
+            PU L#25 (P#25)
+    .....
+        HostBridge L#10
+          PCIBridge
+            PCI 8086:1563
+              Net L#10 "enp175s0f0"
+            PCI 8086:1563
+              Net L#11 "enp175s0f1"
+
+CPU core where ``spp_primary`` run can be specified
+using -l option.
+
+.. code-block:: console
+
+    # terminal 3
+    $ sudo ./src/primary/x86_64-native-linux-gcc/spp_primary \
+        -l 0 -n 4 \
+        --socket-mem 512,512 \
+        --huge-dir /dev/hugepages \
+        --proc-type primary \
+        --file-prefix $SPP_FILE_PREFIX \
+        --base-virtaddr 0x100000000
+        -- \
+        -p 0x03 \
+        -n 10 \
+        -s 192.168.1.100:5555
 
 Reference
 ---------
